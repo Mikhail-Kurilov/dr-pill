@@ -7,6 +7,10 @@ class Result extends React.Component {
 
     constructor(props) {
         super(props);
+
+        this.score = props.location.state.score;
+
+
         this.results = localStorage.getItem('results');
         if (this.results) {
             this.results = JSON.parse(this.results);
@@ -27,6 +31,10 @@ class Result extends React.Component {
         }
     }
 
+    componentDidMount() {
+        document.getElementById('audio').src = '/audio/game-over.mp3';
+    }
+
     render() {
         return (
             <div className="Result">
@@ -35,6 +43,7 @@ class Result extends React.Component {
                 <form>
                     <button onClick={() => history.push('/game')}>go to Game</button>
                 </form>
+                <audio id='audio' autoPlay loop></audio>
             </div>
         );
     }
