@@ -9,6 +9,10 @@ class Home extends React.Component {
         super(props);
     }
 
+    componentDidMount() {
+        document.getElementById('audio').src = '/audio/start.mp3';
+    }
+
     render() {
         return (
             <div className="Home">
@@ -17,6 +21,7 @@ class Home extends React.Component {
                 <form>
                     <button onClick={() => history.push('/game')}>go to Game</button>
                 </form>
+                <audio id='audio' autoPlay loop></audio>
             </div>
         );
     }
