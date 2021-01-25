@@ -16,11 +16,12 @@ class Home extends React.Component {
     render() {
         return (
             <div className="Home">
-                Home
                 <br />
                 <form>
-                    <button onClick={() => history.push('/game')}>go to Game</button>
+                    <button className="glow-on-hover" onClick={() => history.push('/game')}>Play Now!!!</button>
+                    <span></span><span></span><span></span><span></span>
                 </form>
+                <img src="/dr-pill-removebg-clear.png" alt="Dr. Pill"></img>
                 <audio id='audio' autoPlay loop></audio>
             </div>
         );

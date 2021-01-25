@@ -58,7 +58,7 @@ class Game extends React.Component {
 
         return (
             <div className="Game">
-                <div>
+                <div className="statistics">
                     <div>колбы: { this.state.score }</div>
                     <div>времечко: { this.state.sec }</div>
                     <div>пилюли: {this.state.points}/{this.state.maxPoints}</div>
@@ -67,8 +67,9 @@ class Game extends React.Component {
                 <audio id='audio' autoPlay loop></audio>
                 <br />
                 <form>
-                    <button onClick={() => history.push('/')}>Home page</button>
-                    <button onClick={() => history.push('/result')}>Results</button>
+                    <button className="glow-on-hover" onClick={() => history.push('/')}>Home page</button>
+                    <br />
+                    <button className="glow-on-hover" onClick={() => history.push('/result')}>Results</button>
                 </form>
             </div>
         );
