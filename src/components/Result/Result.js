@@ -40,6 +40,9 @@ class Result extends React.Component {
             <div className="Result">
                 Result
                 <br />
+                {this.results.map((result, key) => {
+                    return (<div key={key}>{result.nickname} score:{result.score}</div>)
+                })}
                 <form>
                     <button onClick={() => history.push('/game')}>go to Game</button>
                 </form>
