@@ -8,8 +8,7 @@ class Result extends React.Component {
     constructor(props) {
         super(props);
 
-        this.score = props.location.state.score;
-
+        this.score = props.location?.state?.score;
 
         this.results = localStorage.getItem('results');
         if (this.results) {
@@ -38,13 +37,14 @@ class Result extends React.Component {
     render() {
         return (
             <div className="Result">
-                Result
+                <h2 className='text'>Result</h2>
                 <br />
                 {this.results.map((result, key) => {
-                    return (<div key={key}>{result.nickname} score:{result.score}</div>)
+                    return (<div  className="result-score" key={key}>{result.nickname} score:{result.score}</div>)
                 })}
+                <br />
                 <form>
-                    <button onClick={() => history.push('/game')}>go to Game</button>
+                    <button className="glow-on-hover" onClick={() => history.push('/game')}>go to Game</button>
                 </form>
                 <audio id='audio' autoPlay loop></audio>
             </div>

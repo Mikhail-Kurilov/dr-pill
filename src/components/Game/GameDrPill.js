@@ -190,8 +190,15 @@ class GameDrPill {
     }
 
     clear() {
-        this.context.fillStyle = 'purple';
-        this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
+        for (let i = 0; i < 6; i++) {
+            for (let j = 0; j < 6; j++) {
+        this.context.fillStyle = `rgb(
+            ${Math.floor(255 - 42.5 * i)},
+            ${Math.floor(255 - 42.5 * j)},
+            0)`;
+        this.context.fillRect(0,0, this.canvas.width, this.canvas.height);
+            }
+        }
     }
 
     render() {

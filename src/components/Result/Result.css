@@ -1,0 +1,33 @@
+/*
+.table {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    width: max-content;
+    
+}*/
+.result-score{
+    border: 1px yellow dashed;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    font-family: cursive;
+    font-size: medium;
+    width: 300px;
+    height: inherit;
+}
+.Result {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 550px;
+    margin: 20px 20px;
+}
+.text {
+    font-weight: 500;
+    font-family: 'Roboto' sans-serif;
+    font-size: larger; 
+}
