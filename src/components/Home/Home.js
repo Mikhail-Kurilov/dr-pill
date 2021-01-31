@@ -29,14 +29,18 @@ class Home extends React.Component {
         return (
             <div className="Home">
                 <br />
+                <div className="instruction"> <p>Мир поразила ужасная пандемия! Только Вам под силу создать лекарство, которое спасет этит мир! Необходимо составить комбинации лекарственных препаратов и наполнить им колбы. Внимание, время ограничено, а вирус распространяется молниеносно и человеству требуется все больше вакцины. У Вас есть ровно 60 секунд на заполнение 1 колбы. Каждая последующая колба требует бОльшего количества пилюль! Удачи, друг!</p>
+                <br />
+                </div>
                 <form className="top">
+                                
                     <button className="glow-on-hover" onClick={() => history.push('/game')}>Play Now!!!</button>
-                    
+                    <br />
                     <span></span><span></span><span></span><span></span>
                 </form>
-                <img src="/dr-pill-removebg-clear.png" alt="Dr. Pill"></img>
+                <img id="drPill" src="/dr-pill-removebg-clear.png" alt="Dr. Pill"></img>
                 <button className="glow-on-hover music" onClick={() => this.playPauseAudioHandler()}>
-                    <img src={this.state.audioPic} width='30px' height='30px' className=''></img>
+                    <img id="sound" src={this.state.audioPic} width='30px' height='30px' className=''></img>
                     </button>
                 <audio id='audio' autoPlay loop></audio>
             </div>
