@@ -1,6 +1,6 @@
 .Home {
     background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5));
-    height: 650px;
+    height: 830px;
     width: auto;
     display: flex;
     justify-content: center;
@@ -8,6 +8,7 @@
     flex-direction: column;
  
 }
+
 .glow-on-hover {
     width: 220px;
     height: 50px;
@@ -70,4 +71,73 @@
     0% { background-position: 0 0; }
     50% { background-position: 400% 0; }
     100% { background-position: 0 0; }
+}
+.music {
+    width:50px;
+    height: 50px;
+    border-radius: 5px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    font-weight: bold;
+    font-family: cursive;
+    color: rgb(56, 56, 56);
+    background: rgb(18, 1, 58);
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    margin-bottom: 40px;
+}
+.top {
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.instruction {
+    color: rgb(56, 56, 56);
+    font-weight: 500;
+    font-size: larger;
+    font-family: cursive;
+    width: 80%;
+    margin-top:20px;
+}
+
+@media (max-width: 768px) {
+    .Home {
+        height: 650px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+    }
+    #drPill {
+        width: 50%;
+        height: 50%;
+        align-items: center;
+        margin: 30px 10px;
+    }
+    #sound {
+        width: 17%;
+        height: 45%;
+    }
+    .glow-on-hover {
+        width: 80px;
+        height: 30px;
+        border: none;
+        outline: none;
+        font-size: 16px;
+        font-weight: bold;
+        font-family: cursive;
+        color: rgb(56, 56, 56);
+        background: rgb(18, 1, 58);
+        cursor: pointer;
+        position: relative;
+        z-index: 0;
+        border-radius: 10px;
+        margin-bottom: 40px;
+    }
 }

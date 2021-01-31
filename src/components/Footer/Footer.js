@@ -39,7 +39,8 @@ class Footer extends React.Component {
                         </div>
                     </th>
                     <th>
-                        <p className="description right">All rights reserved</p>
+                        <p className="description right">2021   All rights reserved </p>
+                        
                     </th>
                 </tr>
                 </table>
