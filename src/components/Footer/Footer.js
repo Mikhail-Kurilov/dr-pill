@@ -24,7 +24,8 @@ class Footer extends React.Component {
                         <div>
                         <ul className="block">
                             <li><a href="/">Home</a></li>
-                            <li><a href="https://github.com/Chukana">Github</a></li>
+                            <li><a href="https://github.com/Mikhail-Kurilov">Github_1</a></li>
+                            <li><a href="https://github.com/Chukana">Github_2</a></li>
                             <li><a href="https://app.rs.school/">RSSchool</a></li>
                     </ul>
                     </div>
