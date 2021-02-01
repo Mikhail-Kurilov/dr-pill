@@ -5,6 +5,9 @@ class GameDrPill {
         this.canvas.width = 560;
         this.canvas.height = 560;
         this.canvas.addEventListener('click', (event) => this.clickCell(event));
+        this.canvas.addEventListener('mousemove', (event) => this.moveCell(event));
+        this.canvas.addEventListener('mouseup', () => this.upCell());
+        this.canvas.addEventListener('mousedown', (event) => this.downCell(event));
 
         this.ADD_PILLS = 10;
         this.FIELD_SIZE = 8;
@@ -22,6 +25,34 @@ class GameDrPill {
         this.firstStep = true;
         this.x = -1;
         this.y = -1;
+        this.isDrug = null;
+        this.drugX = -1;
+        this.drugY = -1;
+
+        this.booms = [];
+        this.boomImages = [];
+        this.boomImages.push(new Image());
+        this.boomImages[0].src = '/img/1.png';
+        this.boomImages.push(new Image());
+        this.boomImages[1].src = '/img/2.png';
+        this.boomImages.push(new Image());
+        this.boomImages[2].src = '/img/3.png';
+        this.boomImages.push(new Image());
+        this.boomImages[3].src = '/img/4.png';
+        this.boomImages.push(new Image());
+        this.boomImages[4].src = '/img/5.png';
+        this.boomImages.push(new Image());
+        this.boomImages[5].src = '/img/6.png';
+        this.boomImages.push(new Image());
+        this.boomImages[6].src = '/img/7.png';
+        this.boomImages.push(new Image());
+        this.boomImages[7].src = '/img/8.png';
+        this.boomImages.push(new Image());
+        this.boomImages[8].src = '/img/9.png';
+        this.boomImages.push(new Image());
+        this.boomImages[9].src = '/img/10.png';
+        this.boomImages.push(new Image());
+        this.boomImages[10].src = '/img/11.png';
 
         this.pills = [null];
         this.pills.push(new Image());
@@ -85,6 +116,39 @@ class GameDrPill {
         return false;
     }
 
+    moveCell(event) {
+        if (this.isDrug) {
+            if (this.drugX >= 0 && this.drugY >= 0) {
+                this.render();
+                if (this.field[this.drugX][this.drugY]) {
+                    this.context.drawImage(
+                        this.pills[this.field[this.drugX][this.drugY]],
+                        event.offsetX - this.SIZE / 2,
+                        event.offsetY - this.SIZE / 2,
+                        this.SIZE,
+                        this.SIZE
+                    );
+                    let x = Math.floor(event.offsetX / this.SIZE);
+                    let y = Math.floor(event.offsetY / this.SIZE);
+                    if (Math.abs((x + y) - (this.drugX + this.drugY)) === 1) {
+                        this.move(this.drugX, this.drugY, x, y);
+                        this.upCell();
+                    }
+                }
+            }
+        }
+    }
+    upCell() {
+        this.isDrug = false;
+        this.drugX = -1;
+        this.drugY = -1;
+    }
+
+    downCell(event) {
+        this.isDrug = true;
+        this.drugX = Math.floor(event.offsetX / this.SIZE);
+        this.drugY = Math.floor(event.offsetY / this.SIZE);
+    }
 
     clickCell(event) {
         if (this.x >= 0 && this.y >= 0) {
@@ -128,65 +192,60 @@ class GameDrPill {
     getStatus() {
         let a1 = 0;
         let a2 = 0;
+        // пробежаться по столбцам
         for (let i = 0; i < this.FIELD_SIZE; i++) {
             a1 = 0;
             a2 = 0;
             for (let j = 0; j < this.FIELD_SIZE; j++) {
-                if (a1 === a2 && a2 === this.field[i][j]) {
+                if (a1 && a1 === a2 && a2 === this.field[i][j]) {
                     this.field[i][j] = 0;
                     this.field[i][j - 1] = 0;
                     this.field[i][j - 2] = 0;
+                    this.booms.push({ i, j, currentImage: -1 });
+                    this.booms.push({ i, j: j - 1, currentImage: -1 });
+                    this.booms.push({ i, j: j - 2, currentImage: -1 });
                     setTimeout(() => this.dropElements(), 1500);
                     this.render();
                     this.callbacks.addPills(3);
-                } else if (a1 === a2 && a2 !== this.field[i][j]) {
+                } else if (a1 && a1 === a2 && a2 !== this.field[i][j]) {
                     a1 = this.field[i][j];
                     a2 = 0;
-                } else if (a1 === this.field[i][j]) {
+                } else if (a1 && a1 === this.field[i][j]) {
                     a2 = this.field[i][j];
                 } else {
                     a1 = this.field[i][j];
                 }
             }
         }
-        // пробежаться по строкам
+        // пробежаться по строки
         for (let j = 0; j < this.FIELD_SIZE; j++) {
             a1 = 0;
             a2 = 0;
             for (let i = 0; i < this.FIELD_SIZE; i++) {
-                if (a1 === a2 && a2 === this.field[i][j]) {
+                if (a1 && a1 === a2 && a2 === this.field[i][j]) {
                     this.field[i][j] = 0;
-                    this.field[i-1][j] = 0;
-                    this.field[i-2][j] = 0;
+                    this.field[i - 1][j] = 0;
+                    this.field[i - 2][j] = 0;
+                    this.booms.push({ i, j, currentImage: -1 });
+                    this.booms.push({ i: i - 1, j, currentImage: -1 });
+                    this.booms.push({ i: i - 2, j, currentImage: -1 });
                     setTimeout(() => this.dropElements(), 1500);
                     this.render();
                     this.callbacks.addPills(3);
-                } else if (a1 === a2 && a2 !== this.field[i][j]) {
+                } else if (a1 && a1 === a2 && a2 !== this.field[i][j]) {
                     a1 = this.field[i][j];
                     a2 = 0;
-                } else if (a1 === this.field[i][j]) {
+                } else if (a1 && a1 === this.field[i][j]) {
                     a2 = this.field[i][j];
                 } else {
                     a1 = this.field[i][j];
                 }
             }
-        } 
+        }
     }
 
     restartTime() {
         this.startTimeUpdate();
-    }
-
-    isGameOver() { }
-
-    removeLines() { }
-
-    getNewLevel() {
-        /*this.count = 0;
-        if (this.pills >= 20) {
-           this.count += 1;
-        }
-        this.pills += 10;*/
     }
 
     clear() {
@@ -202,15 +261,40 @@ class GameDrPill {
     }
 
     render() {
-        this.clear();
+        this.clear(); // очистка
+        // нарисовать пилюльки
         for (let i = 0; i < this.field.length; i++) {
             for (let j = 0; j < this.field.length; j++) {
                 if (this.field[i][j]) {
+                    if (this.drugX === i && this.drugY === j) {
+                        continue;
+                    }
                     this.context.drawImage(this.pills[this.field[i][j]], i * this.SIZE, j * this.SIZE, this.SIZE, this.SIZE);
                 } else {
                     this.context.fillRect(i * this.SIZE, j * this.SIZE, this.SIZE, this.SIZE)
                 }
             }
+        }
+
+        // нарисовать бумсы
+        let refresh = false;
+        for (let i = this.booms.length - 1; i >= 0; i--) {
+            const boom = this.booms[i];
+            if (boom) {
+                boom.currentImage++;
+                if (boom.currentImage >= this.boomImages.length) {
+                    this.booms.splice(i, 1);
+                } else {
+                    const i = boom.i;
+                    const j = boom.j;
+                    this.context.drawImage(this.boomImages[boom.currentImage], i * this.SIZE, j * this.SIZE, this.SIZE, this.SIZE);
+                    refresh = true;
+                }
+            }
+        }
+
+        if (refresh) {
+            setTimeout(() => this.render(), 125);
         }
     }
 }

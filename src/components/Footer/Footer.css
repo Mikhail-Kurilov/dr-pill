@@ -46,7 +46,7 @@ tr::before{
     content: " ";
     display: table;
     border-left: 0.5px solid rgb(173, 173, 173); 
-            height: 200px; 
+            height: 250px; 
             position:absolute; 
             left: 40%; 
 }
@@ -54,7 +54,7 @@ tr::after{
     content: " ";
     display: table;
     border-left: 0.5px solid rgb(173, 173, 173); 
-            height: 200px; 
+            height: 250px; 
             position:absolute; 
             left: 62%; 
 }
