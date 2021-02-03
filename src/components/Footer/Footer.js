@@ -17,7 +17,8 @@ class Footer extends React.Component {
         return (
             <div className="Footer">
                 <table className="table_columns">
-                <tr>
+                    <tbody>
+                    <tr>
                     <th> <p className="description">Dr. Pill is the leading interactive entertainment game for people all around the world helping to fight the virus breakdown. We have developed the game for the first time, offering it to enjoy to everyone around the world.</p>
                     </th>
                     <th>
@@ -44,6 +45,8 @@ class Footer extends React.Component {
                         
                     </th>
                 </tr>
+                    </tbody>
+               
                 </table>
 
             </div>
