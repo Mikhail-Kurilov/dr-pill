@@ -83,3 +83,37 @@
     flex-direction: row;
     justify-content: space-between;
 }
+
+@media screen and (min-width: 320px) and (max-width: 640px) {
+    .Game {
+        background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5));
+        height: 550px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        font-family: cursive;
+        font-size: 11px;
+    }
+    .glow-on-hover {
+        width: 80px !important;
+        height: 30px !important;
+        border: none;
+        outline: none;
+        font-size: 11px !important;
+        font-weight: 600;
+        font-family: cursive;
+        color: rgb(56, 56, 56);
+        background: rgb(18, 1, 58);
+        cursor: pointer;
+        position: relative;
+        z-index: 0;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+    #canvas {
+        width: 80%;
+        height: auto;
+    }
+}
